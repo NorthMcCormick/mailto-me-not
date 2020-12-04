@@ -12,6 +12,9 @@
 		716278C12578636A0014C923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716278C02578636A0014C923 /* Assets.xcassets */; };
 		716278C42578636A0014C923 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716278C32578636A0014C923 /* Preview Assets.xcassets */; };
 		716278C72578636A0014C923 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716278C52578636A0014C923 /* Main.storyboard */; };
+		716278D62578815D0014C923 /* MailtoClickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716278D52578815D0014C923 /* MailtoClickList.swift */; };
+		716278D92578819E0014C923 /* MailtoClickListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716278D82578819E0014C923 /* MailtoClickListItem.swift */; };
+		716278E0257884110014C923 /* MailtoMeNot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 716278DE257884110014C923 /* MailtoMeNot.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		716278C62578636A0014C923 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		716278C82578636A0014C923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716278C92578636A0014C923 /* mailto_me_not.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mailto_me_not.entitlements; sourceTree = "<group>"; };
+		716278D52578815D0014C923 /* MailtoClickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailtoClickList.swift; sourceTree = "<group>"; };
+		716278D82578819E0014C923 /* MailtoClickListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailtoClickListItem.swift; sourceTree = "<group>"; };
+		716278DF257884110014C923 /* MailtoMeNot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MailtoMeNot.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +62,15 @@
 			isa = PBXGroup;
 			children = (
 				716278BC257863680014C923 /* AppDelegate.swift */,
+				716278DE257884110014C923 /* MailtoMeNot.xcdatamodeld */,
 				716278BE257863680014C923 /* ContentView.swift */,
 				716278C02578636A0014C923 /* Assets.xcassets */,
 				716278C52578636A0014C923 /* Main.storyboard */,
 				716278C82578636A0014C923 /* Info.plist */,
 				716278C92578636A0014C923 /* mailto_me_not.entitlements */,
 				716278C22578636A0014C923 /* Preview Content */,
+				716278D52578815D0014C923 /* MailtoClickList.swift */,
+				716278D82578819E0014C923 /* MailtoClickListItem.swift */,
 			);
 			path = "mailto-me-not";
 			sourceTree = "<group>";
@@ -145,7 +154,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				716278BF257863680014C923 /* ContentView.swift in Sources */,
+				716278D62578815D0014C923 /* MailtoClickList.swift in Sources */,
 				716278BD257863680014C923 /* AppDelegate.swift in Sources */,
+				716278D92578819E0014C923 /* MailtoClickListItem.swift in Sources */,
+				716278E0257884110014C923 /* MailtoMeNot.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +360,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		716278DE257884110014C923 /* MailtoMeNot.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				716278DF257884110014C923 /* MailtoMeNot.xcdatamodel */,
+			);
+			currentVersion = 716278DF257884110014C923 /* MailtoMeNot.xcdatamodel */;
+			path = MailtoMeNot.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 716278B1257863680014C923 /* Project object */;
 }
