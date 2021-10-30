@@ -8,7 +8,7 @@ struct MailtoClickList: View {
       entity: MailtoClick.entity(),
       // 3
       sortDescriptors: [
-        NSSortDescriptor(keyPath: \MailtoClick.url, ascending: true)
+        NSSortDescriptor(keyPath: \MailtoClick.created, ascending: false)
       ]
     // 4
     ) var items: FetchedResults<MailtoClick>

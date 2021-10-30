@@ -75,9 +75,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
       // 2
         newClick.url = url
+        print("set url")
+        
 
       // 3
       saveContext()
+        print("saved context")
     }
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor, replyEvent: NSAppleEventDescriptor) {
@@ -93,6 +96,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print(url.valueOf("bcc") ?? "")
         print(url.valueOf("test") ?? "")
         
+
+        print("about to add")
+        
+        addMailtoClick(url: urlString!)
+        
         if let email = url.email {
             print("email:", email)    // "email: test@test.com\n"
         }
@@ -102,8 +110,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             self.popover_copied.performClose(self)
         }
-        
-        addMailtoClick(url: urlString!)
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {

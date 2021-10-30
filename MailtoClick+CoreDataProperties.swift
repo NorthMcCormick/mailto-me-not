@@ -17,6 +17,7 @@ extension MailtoClick {
     }
 
     @NSManaged public var url: String
+    @NSManaged public var created: Date
 
 }
 

@@ -11,18 +11,10 @@ import CoreData
 
 @objc(MailtoClick)
 public class MailtoClick: NSManagedObject {
-    var urlParams: URL?
-    
-    convenience init(context moc: NSManagedObjectContext) {
-        self.init(context: moc)
-        
-        self.urlParams = URL(string: self.url)
-    }
-    
     func getEmail() -> String {
         let url = URL(string: self.url)
         
-        let subject = url?.valueOf("subject") ?? ""
+        let subject = url?.email ?? ""
         
         return subject
     }
