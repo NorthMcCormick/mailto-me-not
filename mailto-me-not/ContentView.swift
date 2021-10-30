@@ -11,7 +11,7 @@ import CoreData
 struct ContentView: View {
     
     var body: some View {
-        Text("Hello, World!")
+        Text("Mailto link copied!")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

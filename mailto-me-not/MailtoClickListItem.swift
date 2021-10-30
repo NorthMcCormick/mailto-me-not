@@ -9,8 +9,13 @@ struct MailtoClickListItem: View {
             Color.flatDarkCardBackground
             // 1
             VStack(alignment: .leading) {
-                Text(mailtoClick.url ?? "")
+                Text(mailtoClick.getURL())
                     .padding(.bottom, 5)
+                
+                if (mailtoClick.getSubject().isEmpty == false) {
+                    Text(mailtoClick.getSubject())
+                        .padding(.bottom, 5)
+                }
                 
                 /*Text(address)
                     .padding(.bottom, 5)

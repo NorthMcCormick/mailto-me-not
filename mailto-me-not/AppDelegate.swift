@@ -44,18 +44,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let aem = NSAppleEventManager.shared();
             aem.setEventHandler(self, andSelector: #selector(AppDelegate.handleGetURLEvent(event:replyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
 
-
-        // Create the window and set the content view.
-        /*window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-            backing: .buffered, defer: false)
-        window.isReleasedWhenClosed = false
-        window.center()
-        window.setFrameAutosaveName("Main Window")
-        window.contentView = NSHostingView(rootView: contentView)
-        window.makeKeyAndOrderFront(nil)*/
-        
         // Create the pop over
         let popover = NSPopover()
             popover.contentSize = NSSize(width: 400, height: 400)
@@ -66,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // Create 'copied' popover
         let popover_copied = NSPopover()
-            popover_copied.contentSize = NSSize(width: 100, height: 30)
+            popover_copied.contentSize = NSSize(width: 150, height: 30)
             popover_copied.behavior = .transient
             popover_copied.contentViewController = NSHostingController(rootView: contentView)
         
@@ -81,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func addMovie(url: String) {
+    func addMailtoClick(url: String) {
       // 1
         let newClick = MailtoClick(context: persistentContainer.viewContext)
 
@@ -111,7 +99,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.popover_copied.show(relativeTo: self.statusBarItem.button!.bounds, of: self.statusBarItem.button!, preferredEdge: NSRectEdge.minY)
         
-        addMovie(url: urlString!)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.popover_copied.performClose(self)
+        }
+        
+        addMailtoClick(url: urlString!)
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {

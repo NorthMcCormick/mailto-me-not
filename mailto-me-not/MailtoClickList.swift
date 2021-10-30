@@ -24,6 +24,20 @@ struct MailtoClickList: View {
             List {
                 ForEach(items) { item in
                     MailtoClickListItem(mailtoClick: item)
+                        .contextMenu {
+                            Button {
+                                print("Change country setting")
+                            } label: {
+                                Label("Copy Email", systemImage: "globe")
+                            }
+                            
+                            
+                            Button {
+                                print("Enable geolocation")
+                            } label: {
+                                Label("Detect Location", systemImage: "location.circle")
+                            }
+                        }
                 }
               // .onDelete(perform: deleteMovie)
             }
