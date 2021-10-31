@@ -26,16 +26,68 @@ struct MailtoClickList: View {
                     MailtoClickListItem(mailtoClick: item)
                         .contextMenu {
                             Button {
-                                print("Change country setting")
+                                let pasteboard = NSPasteboard.general
+                                
+                                pasteboard.declareTypes([.string], owner: nil)
+                                pasteboard.setString(item.getEmail(), forType: .string)
                             } label: {
-                                Label("Copy Email", systemImage: "globe")
+                                Label("Copy Email Address", systemImage: "none")
                             }
                             
+                            Button {
+                                let pasteboard = NSPasteboard.general
+                                
+                                pasteboard.declareTypes([.string], owner: nil)
+                                pasteboard.setString(item.getCC(), forType: .string)
+                            } label: {
+                                Label("Copy CC", systemImage: "none")
+                            }
                             
                             Button {
-                                print("Enable geolocation")
+                                let pasteboard = NSPasteboard.general
+                                
+                                pasteboard.declareTypes([.string], owner: nil)
+                                pasteboard.setString(item.getBCC(), forType: .string)
                             } label: {
-                                Label("Detect Location", systemImage: "location.circle")
+                                Label("Copy BCC", systemImage: "none")
+                            }
+                            
+                            Button {
+                                let pasteboard = NSPasteboard.general
+                                
+                                pasteboard.declareTypes([.string], owner: nil)
+                                pasteboard.setString(item.getSubject(), forType: .string)
+                            } label: {
+                                Label("Copy Subject", systemImage: "none")
+                            }
+                            
+                            Button {
+                                let pasteboard = NSPasteboard.general
+                                
+                                pasteboard.declareTypes([.string], owner: nil)
+                                pasteboard.setString(item.getBody(), forType: .string)
+                            } label: {
+                                Label("Copy Body", systemImage: "none")
+                            }
+                            
+                            Divider()
+                            
+                            Button {
+                                context.delete(item)
+                                
+                                do {
+                                  // 3
+                                  try context.save()
+                                    print("saved context");
+                                } catch {
+                                  // 4
+                                  // The c1ontext couldn't be saved.
+                                  // You should add your own error handling here.
+                                  let nserror = error as NSError
+                                  fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "none")
                             }
                         }
                 }

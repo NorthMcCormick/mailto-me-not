@@ -43,6 +43,14 @@ public class MailtoClick: NSManagedObject {
         return bcc
     }
     
+    func getBody() -> String {
+        let url = URL(string: self.url)
+        
+        let body = url?.valueOf("body") ?? ""
+        
+        return body
+    }
+    
     func getURL() -> String {
         return self.url
     }
