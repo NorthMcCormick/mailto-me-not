@@ -83,13 +83,8 @@ struct MailtoClickList: View {
                                 context.delete(item)
                                 
                                 do {
-                                  // 3
                                   try context.save()
-                                    print("saved context");
-                                } catch {   
-                                  // 4
-                                  // The c1ontext couldn't be saved.
-                                  // You should add your own error handling here.
+                                } catch {
                                   let nserror = error as NSError
                                   fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                                 }
@@ -106,9 +101,7 @@ struct MailtoClickList: View {
     
     func saveContext() {
       do {
-        print("Saving saved");
         try context.save()
-        print("Context saved");
       } catch {
         print("Error saving managed object context: \(error)")
       }

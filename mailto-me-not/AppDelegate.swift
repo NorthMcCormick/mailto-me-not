@@ -105,40 +105,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func addMailtoClick(url: String) {
-      // 1
         let newClick = MailtoClick(context: persistentContainer.viewContext)
-
-      // 2
-        newClick.url = url
-        print("set url")
         
-
-      // 3
-      saveContext()
-        print("saved context")
+        newClick.url = url
+        
+        saveContext()
     }
     
     @objc func handleGetURLEvent(event: NSAppleEventDescriptor, replyEvent: NSAppleEventDescriptor) {
 
         let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue!
         let url = URL(string: urlString!)!
-         // DO what you will you now have a url..
-        
-        print(url);
-        print(url.valueOf("body") ?? "")
-        print(url.valueOf("subject") ?? "")
-        print(url.valueOf("cc") ?? "")
-        print(url.valueOf("bcc") ?? "")
-        print(url.valueOf("test") ?? "")
-        
 
-        print("about to add")
-        
         addMailtoClick(url: urlString!)
-        
-        if let email = url.email {
-            print("email:", email)    // "email: test@test.com\n"
-        }
         
         self.popover_copied.show(relativeTo: self.statusBarItem.button!.bounds, of: self.statusBarItem.button!, preferredEdge: NSRectEdge.minY)
         
@@ -201,25 +180,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func saveContext() {
-        print("saving context");
-      // 1
       let context = persistentContainer.viewContext
         
-      // 2
       if context.hasChanges {
         do {
-          // 3
           try context.save()
-            print("saved context");
         } catch {
-          // 4
-          // The context couldn't be saved.
-          // You should add your own error handling here.
           let nserror = error as NSError
+            
           fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-      } else {
-        print("No Changes")
       }
     }
     
@@ -238,16 +208,6 @@ extension URL {
         return scheme == "mailto" ? URLComponents(url: self, resolvingAgainstBaseURL: false)?.path : nil
     }
 }
-
-/*extension UIColor {
-    
-    static let flatDarkBackground = UIColor(red: 36, green: 36, blue: 36)
-    static let flatDarkCardBackground = UIColor(red: 46, green: 46, blue: 46)
-    
-    convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: a)
-    }
-}*/
 
 extension Color {
     public init(decimalRed red: Double, green: Double, blue: Double) {
