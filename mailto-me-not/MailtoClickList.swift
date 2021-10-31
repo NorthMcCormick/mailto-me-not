@@ -20,10 +20,17 @@ struct MailtoClickList: View {
 
 
     var body: some View {
-        VStack {
-            List {
-                ForEach(items) { item in
-                    MailtoClickListItem(mailtoClick: item)
+        VStack (alignment: .center) {
+            if items.count <= 0 {
+                
+                Text("Nothing caught :)")
+                    .frame(width: 400, height: 100, alignment: .center)
+                    .font(.subheadline)
+                    .foregroundColor(Color.secondary)
+            } else {
+                List {
+                    ForEach(items) { item in
+                        MailtoClickListItem(mailtoClick: item)
                         .contextMenu {
                             Button {
                                 let pasteboard = NSPasteboard.general
@@ -79,7 +86,7 @@ struct MailtoClickList: View {
                                   // 3
                                   try context.save()
                                     print("saved context");
-                                } catch {
+                                } catch {   
                                   // 4
                                   // The c1ontext couldn't be saved.
                                   // You should add your own error handling here.
@@ -90,9 +97,10 @@ struct MailtoClickList: View {
                                 Label("Delete", systemImage: "none")
                             }
                         }
+                    }
                 }
-              // .onDelete(perform: deleteMovie)
             }
+        
         }
     }
     
